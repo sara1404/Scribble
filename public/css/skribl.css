@@ -1,0 +1,88 @@
+
+body{
+    background-image: url("../imgs/background.png");
+    margin: 0;
+    padding: 0px;
+}
+#background{
+    position: absolute;
+    z-index: 0;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: auto;
+    margin-top: 60px;
+    width: 60%;
+    height: 550px;
+    min-height: 300px;
+    min-width: 300px;
+    border-radius: 25px;
+    text-align: center;
+    background-color: rgb(237, 145, 138);
+    z-index: 1;
+    
+    overflow: hidden;
+}
+
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+}
+#prva-tri-slova{
+    color: rgb(255, 247, 25);
+}
+#druga-tri-slova{
+    color: rgb(92, 255, 239);
+}
+#treca-tri-slova{
+    color: rgb(52, 247, 59);
+}
+#name{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: bold;
+}
+#submit-button{
+    position: absolute;
+    bottom: 10px;
+    min-height: 40px;
+    max-height: 60px;
+    background-color: rgb(255, 201, 120);
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+#submit-button:hover{
+    background-color: rgb(191, 153, 96);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);;
+    cursor: pointer;
+}
+#slike{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#lik{
+    width: 60%;
+    height: 95%;
+}
+#leva-strelica{
+    width: 20%;
+    margin-bottom: 100px;
+    cursor: pointer;
+}
+#desna-strelica{
+    width: 20%;
+    margin-bottom: 100px;
+    cursor: pointer;
+}
+
+
+
+
