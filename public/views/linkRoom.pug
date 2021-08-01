@@ -1,0 +1,24 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title Scribble
+  link(rel='stylesheet' type='text/css' href='../css/skribl.css')
+h1#linksobe #{roomId}
+button#copy(onclick="copyToClipboard()") COPY!
+#form
+  h1
+    span#prva-tri-slova Scr
+    span#druga-tri-slova ibbl
+    span#treca-tri-slova e.io
+  div
+    label#name(for='inp') NAME:
+    input#inp(type='text' name='name' autofocus='' required='' style='height: 30px; border-radius: 12px; outline: none;' placeholder='enter your name')
+  #slike
+    img#leva-strelica(src='../imgs/levaStrelica.png' width='100px' height='200px')
+    img#lik(src='../imgs/likZensko.png' width='500px' height='350px')
+    img#desna-strelica(src='../imgs/desnaStrelica.png' width='100px' height='200px')
+  br
+  br
+  button#submit-button Ready
+script(src='../scripts/pomeranjeSlika.js')
+script(src='../scripts/clipboard.js')
