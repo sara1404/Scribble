@@ -16,11 +16,3 @@ let listener = () => {
 
 levaStrelica.addEventListener('click', listener);
 desnaStrelica.addEventListener('click', listener);
-
-
-
-
-
-
-
-
