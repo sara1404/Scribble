@@ -22,15 +22,17 @@ body{
     min-width: 300px;
     border-radius: 25px;
     text-align: center;
-    background-color: rgb(237, 145, 138);
+    background: rgb(237, 145, 138);
+    background: linear-gradient(180deg, rgb(237, 145, 138), rgba(237, 145, 138, 0.3));
     z-index: 1;
-    
     overflow: hidden;
+    box-shadow: 1px 2px rgb(80, 80, 80);
 }
 
 h1{
     font-family: 'Courier New', Courier, monospace;
     font-size: 50px;
+    text-shadow: 2px 2px black;
 }
 #prva-tri-slova{
     color: rgb(255, 247, 25);
@@ -75,11 +77,15 @@ h1{
     height: 100%;
     max-width: 500px;
     max-height: 350px;
+    min-width: 500px;
+    min-height: 350px;
+    margin-top: 10px;
 }
 #leva-strelica{
     width: 20%;
     max-height: 100px;
     cursor: pointer;
+
 }
 #desna-strelica{
     width: 20%;
