@@ -14,6 +14,7 @@
     border: 2px solid black;
     text-align: left;
     align-items: center;
+    border-radius: 15px;
 }
 
 .message-box{
@@ -24,6 +25,9 @@
     height: 7%;
     width: 90%;
     margin-bottom: 5px;  
+    border-radius: 17px;
+    outline: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .message{
     padding-left: 3px;
@@ -47,12 +51,122 @@
 /*PROFIL*/
 #profile{
     width: 200px;
-    height: 200px;
+    height: 220px;
     border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgb(252, 250, 169);
+    background: linear-gradient(180deg,rgb(252, 250, 169), rgba(252, 250, 200, 0.8));
+    box-shadow: 2px 2px gray;
+}
+#profile-pic{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+#player-name{
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 30px;
+}
+.ranking{
+    display: flex;
+    flex-direction: row;
+}
+.badge{
+    height: 70px;
+    width: 40%;
+    border: 3px solid salmon;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 50px;
 }
 
+#points{
+    font-size: 40px;
+    
+    height: 70px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+#number-of-points{
+   text-align: center;
+   color: salmon;
+   vertical-align: middle;
+   
+}
 
 /*CANVAS*/
 canvas{
     border: 2px solid black;
+}
+
+.canvas{
+    display: flex;
+    flex-direction: column;
+}
+
+#start-button{
+    width: 40%;
+    align-self: center;
+    margin-top: 30px;
+    height: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
+    border-radius: 15px;
+    background-color: rgb(230, 99, 173);
+    box-shadow: 2px rgb(190, 59, 123);
+    text-shadow: 1px 1px gray;
+    
+}
+#start-button:hover{
+    transition: 0.5s ease-in-out;
+    background-color: rgb(210, 79, 153);
+    width: 43%;
+    height: 55px;
+    font-size: 35px;
+}
+
+/*PLAYERS-LIST*/
+#players-list{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+#players-list-title-box{
+    width: 100%;
+    height: 7%;
+    border-bottom: 2px solid black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(66, 210, 245);
+}
+#players-list-title{
+    text-align: center;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+}
+.list-of-players{
+    width: 100%;
+    height: 93%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: 2%;
+}
+.player{
+    margin-left: 5px;
+    width: 100%;
+    height: 10%;
+    text-align: left;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
 }

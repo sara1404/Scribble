@@ -9,8 +9,23 @@
     <body>
         <div id="container">
             <div id="profile">
-
+                <div id="profile-pic">
+                    <img src="https://thumbs.dreamstime.com/b/pink-cosmos-flowe-flowerbackground-112007426.jpg" alt="flower-pic" width="50%" height="70px">
+                </div>
+                <div id="player-name">
+                    <label>Sara</label>
+                </div>
+                <div class="ranking">
+                    <div class="badge">
+                        <label>#1</label>
+                    </div>
+                    <div id="points">
+                        <label id="number-of-points">1954</label>
+                    </div>
+                </div>
+               
             </div>
+
             <div id="palette">
                 <div class="palette-element">
                     red
@@ -28,12 +43,28 @@
                     bitch
                 </div>
             </div>
-            <canvas width="650px" height="500px">
+            <div class="canvas">
+                <canvas width="650px" height="500px">
 
-            </canvas>
-            <div id="players-list" style="background: turquoise;">
-
+                </canvas>
+                <button onclick="start-game" id="start-button">start</button>
             </div>
+            
+                
+            </canvas>
+
+            <div id="players-list">
+                <div id="players-list-title-box">
+                    <label id="players-list-title">List of players</label>
+                </div>
+                <div class="list-of-players">
+                    <div class="player">1.Sara</div>
+                    <div class="player">2.Srdjan</div>
+                    <div class="player">3.Dobrica</div>
+                    <div class="player">4.Cola</div>
+                </div>
+            </div>
+
             <div id="chat">
                 
                     <div class="message-box">
