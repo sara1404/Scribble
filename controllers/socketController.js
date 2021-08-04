@@ -4,7 +4,7 @@ module.exports = (io) => {
             socket.join(roomId);
         });
         socket.on('message', (msg) => {
-            socket.emit(msg);
+            io.in(msg.channel).emit('message', msg);
         });
     });
 }

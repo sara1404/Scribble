@@ -14,8 +14,9 @@ router.get('/', (req, res) => {
 
 router.get('/:roomId', (req, res) => {
 
-    let base = 'http://localhost:3000/privroom/' + req.params.roomId;
-    res.render('linkRoom.pug', { roomId: base});
+    //let base = 'http://localhost:3000/privroom/' + req.params.roomId;
+    //res.render('linkRoom.pug', { roomId: base});
+    res.sendFile('canvas.html', { root: path.join(__dirname, '../public/html')});
 });
 
 module.exports = router;

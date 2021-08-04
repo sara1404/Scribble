@@ -7,6 +7,9 @@
         <link rel="stylesheet" type="text/css" href="../css/canvas.css"/>
     </head>
     <body>
+        <header class="header">
+            <label id="room-id">123</label>
+        </header>
         <div id="container">
             <div id="profile">
                 <div id="profile-pic">
@@ -88,5 +91,7 @@
                     <input id="message-input" type="text" name="message" style="font-size: 15px;" placeholder="write a message here" autofocus/>  
             </div>
         </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="../scripts/socket.js"></script>
     </body>
 </html>
