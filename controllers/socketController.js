@@ -1,5 +1,10 @@
 module.exports = (io) => {
     io.on('connection', (socket) => {
-        console.log('connection');
+        socket.on('join room', (roomId) => {
+            socket.join(roomId);
+        });
+        socket.on('message', (msg) => {
+            socket.emit(msg);
+        });
     });
 }

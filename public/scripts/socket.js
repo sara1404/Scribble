@@ -1,5 +1,18 @@
 const socket = io();
 
 socket.on('connect', () => {
-    console.log("We just connected");
+    joinRoom();
 });
+
+
+socket.on('message', (data) => {
+
+});
+
+let sendMessage = (text, username, channel) => {
+    socket.emit('message', { text, from: username, channel });
+}
+
+let joinRoom = (channel) => {
+    socket.emit('join room', channel);
+}
