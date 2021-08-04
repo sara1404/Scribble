@@ -30,31 +30,17 @@
             </div>
 
             <div id="palette">
-                <div class="palette-element">
-                    red
-                </div>
-                <div class="palette-element">
-                    blue
-                </div>
-                <div class="palette-element">
-                    yellow
-                </div>
-                <div class="palette-element">
-                    bitch
-                </div>
-                <div class="palette-element">
-                    bitch
-                </div>
+                <input type="color" id="color-picker-palette">
+                <input type="range" min="5" max="30" value="5">
             </div>
+
             <div class="canvas">
                 <canvas width="650px" height="500px">
 
                 </canvas>
                 <button onclick="start-game" id="start-button">start</button>
             </div>
-            
-                
-            </canvas>
+        
 
             <div id="players-list">
                 <div id="players-list-title-box">
@@ -92,6 +78,8 @@
             </div>
         </div>
         <script src="/socket.io/socket.io.js"></script>
+        <script src="../scripts/canvas.js"></script>
         <script src="../scripts/socket.js"></script>
+
     </body>
 </html>
