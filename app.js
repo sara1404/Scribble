@@ -21,5 +21,5 @@ app.use('/', indexRouter);
 app.use('/privroom', privateRoomRouter);
 
 server.listen(PORT, (req, res) => {
-    console.log('listening');
+    console.log('listening at ', PORT);
 });

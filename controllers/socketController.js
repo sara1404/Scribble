@@ -6,5 +6,9 @@ module.exports = (io) => {
         socket.on('message', (msg) => {
             io.in(msg.channel).emit('message', msg);
         });
+
+        socket.on('new drawing', (info) => {
+            socket.to(info.roomId).emit('new drawing', info);
+        })
     });
 }

@@ -26,6 +26,10 @@ socket.on('message', (data) => {
     messageBox.scrollTo(0, messageBox.scrollHeight);
 });
 
+socket.on('new drawing', (info) => {
+    drawStreamedContent(info);
+});
+
 let sendMessage = (text, username, channel) => {
     if(text.trim() == '') return;
     socket.emit('message', { text, from: username, channel });
