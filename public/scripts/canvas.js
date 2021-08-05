@@ -12,11 +12,15 @@ function getStrokeSize() {
     return document.querySelector('input[type=range').value;
 }
 
-function drawStreamedContent({ lastX, currX, lastY, currY, distance, color, strokeSize }) {
-    this.lastX = lastX;
-    this.lastY = lastY;
-    this.currY = currY;
-    this.currX = currX;
+
+function drawStreamedContent(nesto){
+    currX = nesto.currX;
+    currY = nesto.currY;
+    lastX = nesto.lastX;
+    lastY = nesto.lastY;
+    let distance = nesto.distance;
+    let strokeSize = nesto.strokeSize;
+    let color = nesto.color;
     draw(currX, currY, strokeSize, color);
     if(distance > strokeSize) {
         drawSmooth(strokeSize, color);
