@@ -34,15 +34,15 @@
                    
                 </div>
     
-                <div id="palette"  style="background-color: white;">
+                <div class="palette">
                     <label>Pick a color:</label>
                     <input type="color" id="color-picker-palette" oninput="changeBrushColor(this.value)" onchange="changeBrushColor(this.value)">
                     
                     <input type="range" min="5" max="30" value="5" id="brush-range" oninput="changeBrushSize(this.value)" onchange="changeBrushSize(this.value)">
                     <div id="brush-size" ></div>
                     <div class="palette-icons">
-                        <img src="../imgs/broom-cleaning.png" alt="broom" width="20px" height="20px" id="broom">
-                        <img src="../imgs/paint-roller-bucket.png" alt="broom" width="20px" height="20px" id="bucket">
+                        <img src="../imgs/broom-cleaning.png" alt="broom" width="40px" height="40px" id="broom">
+                        <img src="../imgs/paint-roller-bucket.png" alt="broom" width="40px" height="40px" id="bucket">
                     </div>
                    
                 </div>
@@ -58,9 +58,8 @@
         
 
             <div id="players-list">
-                <div id="players-list-title-box">
-                    <label id="players-list-title">List of players</label>
-                </div>
+
+                <label id="players-list-title">List of players</label>
                 <div class="list-of-players">
                     <div class="player">1.Sara</div>
                     <div class="player">2.Srdjan</div>
@@ -71,24 +70,7 @@
 
             <div id="chat">
                 
-                    <div class="message-box">
-                        <div class="message">
-                            <label id="message-owner">Sara:</label>
-                            <label class="message-text"> Ovo je poruka</label>
-                        </div>
-                        <div class="message">
-                            <label id="message-owner">Sara:</label>
-                            <label class="message-text"> Ovo je poruka</label>
-                        </div>
-                        <div class="message">
-                            <label id="message-owner">Sara:</label>
-                            <label class="message-text"> Ovo je poruka</label>
-                        </div>
-                        <div class="message">
-                            <label id="message-owner">Sara:</label>
-                            <label class="message-text"> Ovo je poruka</label>
-                        </div>
-                    </div>
+                    <div class="message-box"></div>
                     <input id="message-input" type="text" name="message" style="font-size: 15px;" placeholder="write a message here" autofocus/>  
             </div>
         </div>

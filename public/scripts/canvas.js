@@ -35,7 +35,7 @@ function changeBrushSize(size){
 }
 
 function changeBrushColor(color){
-    brushSize.style.borderColor = color;
+    
     brushSize.style.backgroundColor = color;
 }
 
@@ -83,13 +83,7 @@ canvas.addEventListener('mousedown', (e) => {
     lastY = currY;
     currX = e.offsetX;
     currY = e.offsetY;
-<<<<<<< HEAD
-    console.log('mouse down');
-    // let x = e.offsetX;
-    // let y = e.offsetY;
-    draw(currX, currY);
-=======
->>>>>>> 08cedc752d5c8d2de50cb746f25ccf44e4ab6299
+    draw(currX, currY, getStrokeSize(), getColor());
 });
 
 canvas.addEventListener('mousemove', (e) => {
