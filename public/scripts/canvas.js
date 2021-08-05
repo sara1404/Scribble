@@ -1,32 +1,49 @@
 let canvas = document.querySelector('canvas');
 let context = canvas.getContext('2d');
 let pressed = false;
-let currX=null, currY=null, lastX=null, lastY=null;
+let currX = null, currY = null, lastX = null, lastY = null;
+let notMyTurn = false;
+
+function getColor() {
+    return document.querySelector('input[type=color').value;
+}
+
+function getStrokeSize() {
+    return document.querySelector('input[type=range').value;
+}
+
+function drawStreamedContent({ lastX, currX, lastY, currY, distance, color, strokeSize }) {
+    this.lastX = lastX;
+    this.lastY = lastY;
+    this.currY = currY;
+    this.currX = currX;
+    draw(currX, currY, strokeSize, color);
+    if(distance > strokeSize) {
+        drawSmooth(strokeSize, color);
+    }
+}
 
 function calculateDistance() {
     if(currX == null || currY == null || lastX == null || lastY == null) return;
-    console.log(currX,currY,lastX, lastY);
+
     let a = Math.abs(currX - lastX);
     let b = Math.abs(currY - lastY);
     let result = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
     return result;
 }
-function draw(x, y){
-    context.fillStyle = document.getElementById('color-picker-palette').value;
-    let strokeSize = document.querySelector('input[type=range]').value;
+function draw(x, y, strokeSize, color){
+    context.fillStyle = color;
     context.beginPath();
     context.ellipse(x, y, strokeSize, strokeSize, 0, 0, 2*Math.PI);
     context.fill();
 }
 
 
-function drawSmooth() {
-    let strokeSize = document.querySelector('input[type=range').value;
-    console.log('drawing');
+function drawSmooth(strokeSize, color) {
     context.beginPath();
     context.moveTo(lastX, lastY);
     context.lineTo(currX, currY);
-    context.strokeStyle = document.querySelector('input[type=color]').value;
+    context.strokeStyle = color;
     context.lineWidth = 2 * strokeSize;
     context.stroke();
     context.closePath();
@@ -34,37 +51,34 @@ function drawSmooth() {
 
 
 canvas.addEventListener('mousedown', (e) => {
+    if(notMyTurn) return;
     pressed = true;
     lastX = currX;
     lastY = currY;
     currX = e.offsetX;
     currY = e.offsetY;
-    console.log('mouse down');
-    // let x = e.offsetX;
-    // let y = e.offsetY;
-    // draw(x, y);
 });
 
 canvas.addEventListener('mousemove', (e) => {
-    if(!pressed) return;
+    if(!pressed || notMyTurn) return;
     lastX = currX;
     lastY = currY;
     currX = e.offsetX;
     currY = e.offsetY;
     let distance = calculateDistance();
-    let strokeSize = document.querySelector('input[type=range').value;
-    if(distance < strokeSize) {
-        draw(currX, currY);
-    } else {
-        draw(currX, currY);
-        drawSmooth();
+    let strokeSize = getStrokeSize();
+    let color = getColor();
+    draw(currX, currY, strokeSize, color);
+    if(distance > strokeSize) {
+        drawSmooth(strokeSize, color);
     }
-
-    // let x = e.offsetX;
-    // let y = e.offsetY;
-    //draw(x, y);
+    socket.emit('new drawing', { lastX, currX, lastY, currY, color, strokeSize, distance, roomId})
 });
 
 canvas.addEventListener('mouseup', (e) => {
+    pressed = false;
+});
+
+canvas.addEventListener('mouseout', (e) => {
     pressed = false;
 });
