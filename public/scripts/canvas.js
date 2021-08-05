@@ -3,6 +3,32 @@ let context = canvas.getContext('2d');
 let pressed = false;
 let currX=null, currY=null, lastX=null, lastY=null;
 
+let count = document.getElementById('clock');
+
+let brushSize = document.getElementById('brush-size');
+let pickedBrushSize = document.getElementById('brush-range');
+
+
+function changeBrushSize(size){
+    brushSize.style.width = (size*2) + 'px';
+    brushSize.style.height = (size*2) + 'px';
+}
+
+function changeBrushColor(color){
+    brushSize.style.borderColor = color;
+    brushSize.style.backgroundColor = color;
+}
+
+function startClock(intervalSize){
+    let clock = setInterval(function(){
+        if(intervalSize == 0) return clearInterval(clock);
+        intervalSize--;
+        count.innerHTML = intervalSize;
+    }, 1000);
+}
+
+
+
 function calculateDistance() {
     if(currX == null || currY == null || lastX == null || lastY == null) return;
     console.log(currX,currY,lastX, lastY);
@@ -42,7 +68,7 @@ canvas.addEventListener('mousedown', (e) => {
     console.log('mouse down');
     // let x = e.offsetX;
     // let y = e.offsetY;
-    // draw(x, y);
+    draw(currX, currY);
 });
 
 canvas.addEventListener('mousemove', (e) => {

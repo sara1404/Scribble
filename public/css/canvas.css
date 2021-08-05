@@ -16,6 +16,20 @@ header{
     margin-bottom: 20px;
     text-align: center;
     box-shadow: 2px 2px black;
+    display: flex;
+    flex-direction: row;
+}
+#clock{
+    width: 4%;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 50%;
+    margin-left: 50px;
+    margin-top: 3px;
+    margin-right: 550px;
+    font-size: 45px;
+    padding-bottom: 2px;
+    background-color: burlywood;
 }
 #room-id{
     font-size: 30px;
@@ -33,6 +47,7 @@ header{
     text-align: left;
     align-items: center;
     border-radius: 15px;
+    margin-right: 10px;
 }
 
 .message-box{
@@ -54,10 +69,36 @@ header{
 }
 
 /*PALETA*/
+.profile-and-palette{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
 #palette{
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
+    align-self: center;
+    border: 3px solid black;
+    width: 200px;
+    height: 200px;
+    background-color: cadetblue;
+    text-align: center;
+}
+#color-picker-palette{
+    align-self: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
     
+}
+#brush-size{
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    align-self: center;
+    background-color: black;
 }
 
 
@@ -67,8 +108,8 @@ header{
     height: 220px;
     border: 2px solid black;
     border-radius: 10px;
-    background-color: rgb(252, 250, 169);
-    background: linear-gradient(180deg,rgb(252, 250, 169), rgba(252, 250, 200, 0.8));
+    background-color: cadetblue;
+    
     box-shadow: 2px 2px gray;
 }
 #profile-pic{
@@ -159,7 +200,7 @@ canvas{
     border-bottom: 2px solid black;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    background-color: rgb(66, 210, 245);
+    background-color: cadetblue;
 }
 #players-list-title{
     text-align: center;
