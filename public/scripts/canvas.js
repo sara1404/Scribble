@@ -27,6 +27,32 @@ function drawStreamedContent(nesto){
     }
 }
 
+let count = document.getElementById('clock');
+
+let brushSize = document.getElementById('brush-size');
+let pickedBrushSize = document.getElementById('brush-range');
+
+
+function changeBrushSize(size){
+    brushSize.style.width = (size*2) + 'px';
+    brushSize.style.height = (size*2) + 'px';
+}
+
+function changeBrushColor(color){
+    brushSize.style.borderColor = color;
+    brushSize.style.backgroundColor = color;
+}
+
+function startClock(intervalSize){
+    let clock = setInterval(function(){
+        if(intervalSize == 0) return clearInterval(clock);
+        intervalSize--;
+        count.innerHTML = intervalSize;
+    }, 1000);
+}
+
+
+
 function calculateDistance() {
     if(currX == null || currY == null || lastX == null || lastY == null) return;
 
@@ -61,6 +87,13 @@ canvas.addEventListener('mousedown', (e) => {
     lastY = currY;
     currX = e.offsetX;
     currY = e.offsetY;
+<<<<<<< HEAD
+    console.log('mouse down');
+    // let x = e.offsetX;
+    // let y = e.offsetY;
+    draw(currX, currY);
+=======
+>>>>>>> 08cedc752d5c8d2de50cb746f25ccf44e4ab6299
 });
 
 canvas.addEventListener('mousemove', (e) => {

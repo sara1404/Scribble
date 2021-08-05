@@ -8,34 +8,49 @@
     </head>
     <body>
         <header class="header">
+            <div id="clock"></div>
+            <div id="word-to-guess">
+                <h3>_ _ _ _ _</h3>
+            </div>
             <label id="room-id">123</label>
         </header>
         <div id="container">
-            <div id="profile">
-                <div id="profile-pic">
-                    <img src="https://thumbs.dreamstime.com/b/pink-cosmos-flowe-flowerbackground-112007426.jpg" alt="flower-pic" width="50%" height="70px">
-                </div>
-                <div id="player-name">
-                    <label>Sara</label>
-                </div>
-                <div class="ranking">
-                    <div class="badge">
-                        <label>#1</label>
+            <div class="profile-and-palette">
+                <div id="profile">
+                    <div id="profile-pic">
+                        <img src="https://thumbs.dreamstime.com/b/pink-cosmos-flowe-flowerbackground-112007426.jpg" alt="flower-pic" width="50%" height="70px">
                     </div>
-                    <div id="points">
-                        <label id="number-of-points">1954</label>
+                    <div id="player-name">
+                        <label>Sara</label>
                     </div>
+                    <div class="ranking">
+                        <div class="badge">
+                            <label>#1</label>
+                        </div>
+                        <div id="points">
+                            <label id="number-of-points">1954</label>
+                        </div>
+                    </div>
+                   
                 </div>
-               
+    
+                <div id="palette"  style="background-color: white;">
+                    <label>Pick a color:</label>
+                    <input type="color" id="color-picker-palette" oninput="changeBrushColor(this.value)" onchange="changeBrushColor(this.value)">
+                    
+                    <input type="range" min="5" max="30" value="5" id="brush-range" oninput="changeBrushSize(this.value)" onchange="changeBrushSize(this.value)">
+                    <div id="brush-size" ></div>
+                    <div class="palette-icons">
+                        <img src="../imgs/broom-cleaning.png" alt="broom" width="20px" height="20px" id="broom">
+                        <img src="../imgs/paint-roller-bucket.png" alt="broom" width="20px" height="20px" id="bucket">
+                    </div>
+                   
+                </div>
             </div>
-
-            <div id="palette">
-                <input type="color" id="color-picker-palette">
-                <input type="range" min="5" max="30" value="5">
-            </div>
+            
 
             <div class="canvas">
-                <canvas width="650px" height="500px">
+                <canvas width="750px" height="550px">
 
                 </canvas>
                 <button onclick="start-game" id="start-button">start</button>
