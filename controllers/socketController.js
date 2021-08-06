@@ -9,6 +9,12 @@ module.exports = (io) => {
 
         socket.on('new drawing', (info) => {
             socket.to(info.roomId).emit('new drawing', info);
-        })
+        });
+
+        socket.on('new player', (data) => {
+            console.log(data);
+            io.in(data.roomId).emit('new player', { img: data.img, username: data.username });
+        });
+
     });
 }
