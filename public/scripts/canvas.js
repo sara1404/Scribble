@@ -5,7 +5,7 @@ let currX = null, currY = null, lastX = null, lastY = null;
 let notMyTurn = false;
 
 function getColor() {
-    return document.querySelector('input[type=color').value;
+    return document.querySelector('input[type=color]').value;
 }
 
 function getStrokeSize() {
@@ -37,6 +37,24 @@ function changeBrushSize(size){
 function changeBrushColor(color){
     
     brushSize.style.backgroundColor = color;
+}
+
+function clearCanvas(){
+    context.fillStyle = "White";
+    context.beginPath();
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.closePath();
+    context.fill();
+}
+
+function fillCanvas(){
+    let color = document.querySelector('input[type=color]').value;
+    console.log(color);
+    context.fillStyle = color;
+    context.beginPath();
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.closePath();
+    context.fill();
 }
 
 function startClock(intervalSize){

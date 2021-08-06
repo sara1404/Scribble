@@ -70,7 +70,9 @@ header{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .message{
-    padding-left: 3px;
+    margin-left: 3px;
+    margin-bottom: 2px;
+    margin-top: 2px;
     border-bottom: 1px solid black;
 }
 
@@ -109,19 +111,24 @@ header{
 }
 .palette-icons{
     position: absolute;
-    margin-top: 200px;
+    margin-top: 190px;
     padding-left: 50px;
 }
 #broom{
     border: 2px solid black;
     padding: 3px;
+    cursor: pointer;
 }
 #bucket{
     border: 2px solid black;
     padding: 3px;
+    cursor: pointer;
 }
 .palette label{
-    color: white;
+    color: whitesmoke;
+    text-shadow: 1px 1px black;
+    font-size: 20px;
+    padding-top: 5px;
 }
 /*PROFIL*/
 #profile{
@@ -144,6 +151,8 @@ header{
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     font-size: 30px;
+    color: whitesmoke;
+    text-shadow: 1px 1px black;
 }
 .ranking{
     display: flex;
@@ -152,7 +161,7 @@ header{
 .badge{
     height: 70px;
     width: 40%;
-    border: 3px solid salmon;
+    border: 3px solid whitesmoke;
     border-radius: 50%;
     margin-left: 5px;
     margin-top: 5px;
@@ -168,9 +177,9 @@ header{
 }
 #number-of-points{
    text-align: center;
-   color: salmon;
+   color: whitesmoke;
    vertical-align: middle;
-   
+   text-shadow: 1px 1px black;
 }
 
 /*CANVAS*/
@@ -187,7 +196,7 @@ canvas{
 #start-button{
     width: 40%;
     align-self: center;
-    margin-top: 30px;
+    margin-top: 20px;
     height: 50px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 25px;
@@ -199,7 +208,7 @@ canvas{
 }
 #start-button:hover{
     transition: 0.5s ease-in-out;
-    background-color: rgb(210, 79, 153);
+    background-color: lightgrey;
     width: 43%;
     height: 55px;
     font-size: 35px;

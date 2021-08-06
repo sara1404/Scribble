@@ -41,8 +41,8 @@
                     <input type="range" min="5" max="30" value="5" id="brush-range" oninput="changeBrushSize(this.value)" onchange="changeBrushSize(this.value)">
                     <div id="brush-size" ></div>
                     <div class="palette-icons">
-                        <img src="../imgs/broom-cleaning.png" alt="broom" width="40px" height="40px" id="broom">
-                        <img src="../imgs/paint-roller-bucket.png" alt="broom" width="40px" height="40px" id="bucket">
+                        <img src="../imgs/broom-cleaning.png" alt="broom" width="40px" height="40px" id="broom" onclick="clearCanvas()">
+                        <img src="../imgs/paint-roller-bucket.png" alt="broom" width="40px" height="40px" id="bucket" onclick="fillCanvas()">
                     </div>
                    
                 </div>
@@ -61,15 +61,30 @@
 
                 <label id="players-list-title">List of players</label>
                 <div class="list-of-players">
-                    <div class="player">1.Sara</div>
-                    <div class="player">2.Srdjan</div>
-                    <div class="player">3.Dobrica</div>
-                    <div class="player">4.Cola</div>
+                    <div class="player">
+                        <img src="https://m.media-amazon.com/images/I/81kTc0r6StL._SL1500_.jpg" alt="">
+                        <label> 1.Sara</label> 
+                        <label > 2589 </label>
+                    </div>
+                    <div class="player">
+                        <img src="https://m.media-amazon.com/images/I/81kTc0r6StL._SL1500_.jpg" alt="">
+                        <label> 2.Srdjan</label> 
+                        <label > 2589 </label>
+                    </div>
+                    <div class="player">
+                        <img src="https://m.media-amazon.com/images/I/81kTc0r6StL._SL1500_.jpg" alt="">
+                        <label> 3.Dobrica</label> 
+                        <label > 2589 </label>
+                    </div>
+                    <div class="player">
+                        <img src="https://m.media-amazon.com/images/I/81kTc0r6StL._SL1500_.jpg" alt="">
+                        <label> 4.Cola</label> 
+                        <label > 2589 </label>
+                    </div>
                 </div>
             </div>
 
             <div id="chat">
-                
                     <div class="message-box"></div>
                     <input id="message-input" type="text" name="message" style="font-size: 15px;" placeholder="write a message here" autofocus/>  
             </div>
