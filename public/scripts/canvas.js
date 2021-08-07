@@ -12,14 +12,14 @@ function getStrokeSize() {
     return document.querySelector('input[type=range').value;
 }
 
-function drawStreamedContent({ lastX, currX, lastY, currY, distance, color, strokeSize }) {
-    this.lastX = lastX;
-    this.lastY = lastY;
-    this.currY = currY;
-    this.currX = currX;
-    draw(currX, currY, strokeSize, color);
-    if(distance > strokeSize) {
-        drawSmooth(strokeSize, color);
+function drawStreamedContent(data) {
+    currX = data.currX;
+    currY = data.currY;
+    lastX = data.lastX;
+    lastY = data.lastY;
+    draw(currX, currY, data.strokeSize, data.color);
+    if(data.distance > data.strokeSize) {
+        drawSmooth(data.strokeSize, data.color);
     }
 }
 

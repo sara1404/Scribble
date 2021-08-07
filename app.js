@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 //Routers 
 const indexRouter = require('./routes/indexRouter');
 const privateRoomRouter = require('./routes/privateRoomRouter');
+const wordsRouter = require('./routes/wordsApiRouter');
 //Activate socket listener
 require('./controllers/socketController')(io);
 
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routes in use
 app.use('/', indexRouter);
 app.use('/privroom', privateRoomRouter);
+app.use('/api/words', wordsRouter);
 
 server.listen(PORT, (req, res) => {
     console.log('listening at ', PORT);
