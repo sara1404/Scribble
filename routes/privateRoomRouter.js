@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
     if(username == undefined || username == null) 
         username = 'Generic';
     console.log(shortId.generate());
-    res.render('privateRoom.pug', { username })
+    //res.render('privateRoom.pug', { username })
+    res.sendFile('privateRoom.html', {root: path.join(__dirname, '../public/html')});
 });
 
 
