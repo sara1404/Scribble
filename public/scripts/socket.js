@@ -46,12 +46,19 @@ function addNewPlayer(img, name){
     let element = document.createElement('div');
     let playerPic = document.createElement('img');
     let playerName = document.createElement('label');
+    let points = document.createElement('label');
     element.className = 'player';
     playerPic.src = img;
     playerName.innerHTML = name;
+    points.innerHTML = '0';
     element.appendChild(playerPic);
     element.appendChild(playerName);
+    element.appendChild(points);
     listOfPlayers.appendChild(element);
+}
+
+function removePlayer(){
+    
 }
 
 messageContext.addEventListener('keypress', (e) => {
@@ -77,5 +84,5 @@ socket.on('new drawing', (info) => { drawStreamedContent(info) });
 
 socket.on('new player', (data) => {
    //OVDJE TREBA DA SE POZOVE FUNKCIJA KOJA CE UBACIVATI NOVE IGRACE
-   addNewPlayer('https://thumbs.dreamstime.com/b/pink-cosmos-flowe-flowerbackground-112007426.jpg', 'bla');
+   addNewPlayer(profilePic.currentSrc, playerUsername.innerHTML);
 });

@@ -254,3 +254,7 @@ canvas{
     display: flex;
     flex-direction: row;
 }
+.player label{
+    padding-left: 2px;
+    padding-right: 2px;
+}
