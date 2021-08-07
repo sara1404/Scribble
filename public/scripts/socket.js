@@ -20,7 +20,6 @@ let joinRoom = (channel) => {
 }
 
 let emitNewPlayer = () => {
-    //OVDJE TREBA DA SE IZVUCE SRC OD NASLOVNE SLIKE I DA SE PROSLIJEDI SVIM OSTALIM IGRACIMA
     socket.emit('new player', { roomId, username: playerUsername.innerHTML, img: profilePic.currentSrc});
 }
 
@@ -83,6 +82,5 @@ socket.on('message', (data) => {
 socket.on('new drawing', (info) => { drawStreamedContent(info) });
 
 socket.on('new player', (data) => {
-   //OVDJE TREBA DA SE POZOVE FUNKCIJA KOJA CE UBACIVATI NOVE IGRACE
    addNewPlayer(profilePic.currentSrc, playerUsername.innerHTML);
 });

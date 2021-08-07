@@ -12,7 +12,6 @@ module.exports = (io) => {
         });
 
         socket.on('new player', (data) => {
-            console.log(data);
             io.in(data.roomId).emit('new player', { img: data.img, username: data.username });
         });
 
