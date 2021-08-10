@@ -110,16 +110,38 @@ header{
     background-color: black;
 }
 .palette-icons{
-    position: absolute;
-    margin-top: 190px;
-    padding-left: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
-#broom{
+
+.brush-container {
+    max-width: 60px;
+    max-height: 60px;
+    min-height: 60px;
+    min-width: 60px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    align-self: center;
+}
+#brush-size {
+    margin: auto;
+}
+/* #broom{
     border: 2px solid black;
     padding: 3px;
     cursor: pointer;
 }
 #bucket{
+    border: 2px solid black;
+    padding: 3px;
+    cursor: pointer;
+}
+
+KADA IMAS VISE SELECTORA SA ISTIM PROPERTIMA, TADA IDE KLASA!!!
+*/
+
+.pallete-buttons {
     border: 2px solid black;
     padding: 3px;
     cursor: pointer;

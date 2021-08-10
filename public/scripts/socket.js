@@ -84,3 +84,7 @@ socket.on('new drawing', (info) => { drawStreamedContent(info) });
 socket.on('new player', (data) => {
    addNewPlayer(profilePic.currentSrc, playerUsername.innerHTML);
 });
+
+socket.on('fill', ({ imageData }) => {
+    switchImageData(imageData);
+})

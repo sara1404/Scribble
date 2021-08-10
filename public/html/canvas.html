@@ -6,6 +6,11 @@
         <title>Scribble</title>
         <link rel="stylesheet" type="text/css" href="../css/canvas.css"/>
     </head>
+    <script>
+        window.onload = function () {
+            fillCanvasBackground();
+        }
+    </script>
     <body>
         <header class="header">
             <div id="clock"></div>
@@ -39,10 +44,11 @@
                     <input type="color" id="color-picker-palette" oninput="changeBrushColor(this.value)" onchange="changeBrushColor(this.value)">
                     
                     <input type="range" min="5" max="30" value="5" id="brush-range" oninput="changeBrushSize(this.value)" onchange="changeBrushSize(this.value)">
-                    <div id="brush-size" ></div>
+                    <div height="60px" width="60px" class="brush-container"><div id="brush-size" ></div></div>
                     <div class="palette-icons">
-                        <img src="../imgs/broom-cleaning.png" alt="broom" width="40px" height="40px" id="broom" onclick="clearCanvas()">
-                        <img src="../imgs/paint-roller-bucket.png" alt="broom" width="40px" height="40px" id="bucket" onclick="fillCanvas()">
+                        <img class="pallete-buttons" src="../imgs/drawing.png" alt="drawing" width="40px" height="40px" onclick="switchToDrawing()">
+                        <img class="pallete-buttons" src="../imgs/broom-cleaning.png" alt="broom" width="40px" height="40px" id="broom" onclick="clearCanvas()">
+                        <img class="pallete-buttons" src="../imgs/paint-roller-bucket.png" alt="broom" width="40px" height="40px" id="bucket" onclick="switchToFill()">
                     </div>
                    
                 </div>
@@ -89,9 +95,11 @@
                     <input id="message-input" type="text" name="message" style="font-size: 15px;" placeholder="write a message here" autofocus/>  
             </div>
         </div>
+ 
         <script src="/socket.io/socket.io.js"></script>
         <script src="../scripts/canvas.js"></script>
         <script src="../scripts/socket.js"></script>
+        <script src="../scripts/canvasFill.js"></script>
 
     </body>
 </html>

@@ -15,5 +15,9 @@ module.exports = (io) => {
             io.in(data.roomId).emit('new player', { img: data.img, username: data.username });
         });
 
+        socket.on('fill', (data) => {
+            io.in(data.roomId).emit('fill', data);
+        });
+
     });
 }

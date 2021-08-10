@@ -3,6 +3,7 @@ let context = canvas.getContext('2d');
 let pressed = false;
 let currX = null, currY = null, lastX = null, lastY = null;
 let notMyTurn = false;
+let drawing = true;
 
 let drawing = true;
 let fill = false;
@@ -50,14 +51,6 @@ function clearCanvas(){
     context.fill();
 }
 
-function colorPixel(pixelPos, color, colorArray)
-{
-    colorArray[pixelPos] = color[0]
-    colorArray[pixelPos+1] = color[1];
-    colorArray[pixelPos+2] = color[2];
-    colorArray[pixelPos+3] = 255;
-}
-
 function startClock(intervalSize){
     let clock = setInterval(function(){
         if(intervalSize == 0) return clearInterval(clock);
@@ -76,6 +69,7 @@ function calculateDistance() {
     let result = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
     return result;
 }
+
 function draw(x, y, strokeSize, color){
     context.fillStyle = color;
     context.beginPath();
@@ -94,13 +88,38 @@ function drawSmooth(strokeSize, color) {
     context.closePath();
 }
 
+function switchToFill() {
+    drawing = false;
+}
+
+function switchToDrawing() {
+    drawing = true;
+}
+
+function convertHexToRGBA(hex) {
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+
+    return [r, g, b, 255];
+
+}
+
+
 canvas.addEventListener('click', (e) => {
-    if(drawing == true) return;
-    fillCanvas(e.offsetX, e.offsetY);
+    if(drawing) return;
+    let color = document.querySelector('input[type=color]').value;
+    let x = e.offsetX;
+    let y = e.offsetY;
+    let r = context.getImageData(0, 0, width, height).data[4 * (y * width + x)];
+    let g = context.getImageData(0, 0, width, height).data[4 * (y * width + x) + 1];
+    let b = context.getImageData(0, 0, width, height).data[4 * (y * width + x) + 2];
+
+    fillBucket(x, y, [r, g, b, 255], convertHexToRGBA(color.substring(1)));
 });
 
 canvas.addEventListener('mousedown', (e) => {
-    if(notMyTurn || drawing == false) return;
+    if(notMyTurn || !drawing) return;
     pressed = true;
     lastX = currX;
     lastY = currY;
