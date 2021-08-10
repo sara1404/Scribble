@@ -4,6 +4,9 @@ let pressed = false;
 let currX = null, currY = null, lastX = null, lastY = null;
 let notMyTurn = false;
 
+let drawing = true;
+let fill = false;
+
 function getColor() {
     return document.querySelector('input[type=color]').value;
 }
@@ -47,14 +50,12 @@ function clearCanvas(){
     context.fill();
 }
 
-function fillCanvas(){
-    let color = document.querySelector('input[type=color]').value;
-    console.log(color);
-    context.fillStyle = color;
-    context.beginPath();
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    context.closePath();
-    context.fill();
+function colorPixel(pixelPos, color, colorArray)
+{
+    colorArray[pixelPos] = color[0]
+    colorArray[pixelPos+1] = color[1];
+    colorArray[pixelPos+2] = color[2];
+    colorArray[pixelPos+3] = 255;
 }
 
 function startClock(intervalSize){
@@ -93,9 +94,13 @@ function drawSmooth(strokeSize, color) {
     context.closePath();
 }
 
+canvas.addEventListener('click', (e) => {
+    if(drawing == true) return;
+    fillCanvas(e.offsetX, e.offsetY);
+});
 
 canvas.addEventListener('mousedown', (e) => {
-    if(notMyTurn) return;
+    if(notMyTurn || drawing == false) return;
     pressed = true;
     lastX = currX;
     lastY = currY;
