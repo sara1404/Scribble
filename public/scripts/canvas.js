@@ -3,6 +3,7 @@ let context = canvas.getContext('2d');
 let pressed = false;
 let currX = null, currY = null, lastX = null, lastY = null;
 let notMyTurn = false;
+let drawing = true;
 
 function getColor() {
     return document.querySelector('input[type=color]').value;
@@ -75,6 +76,7 @@ function calculateDistance() {
     let result = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
     return result;
 }
+
 function draw(x, y, strokeSize, color){
     context.fillStyle = color;
     context.beginPath();
@@ -93,9 +95,38 @@ function drawSmooth(strokeSize, color) {
     context.closePath();
 }
 
+function switchToFill() {
+    drawing = false;
+}
+
+function switchToDrawing() {
+    drawing = true;
+}
+
+function convertHexToRGBA(hex) {
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+
+    return [r, g, b, 255];
+
+}
+
+
+canvas.addEventListener('click', (e) => {
+    if(drawing) return;
+    let color = document.querySelector('input[type=color]').value;
+    let x = e.offsetX;
+    let y = e.offsetY;
+    let r = context.getImageData(0, 0, width, height).data[4 * (y * width + x)];
+    let g = context.getImageData(0, 0, width, height).data[4 * (y * width + x) + 1];
+    let b = context.getImageData(0, 0, width, height).data[4 * (y * width + x) + 2];
+
+    fillBucket(x, y, [r, g, b, 255], convertHexToRGBA(color.substring(1)));
+});
 
 canvas.addEventListener('mousedown', (e) => {
-    if(notMyTurn) return;
+    if(notMyTurn || !drawing) return;
     pressed = true;
     lastX = currX;
     lastY = currY;
