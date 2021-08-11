@@ -6,7 +6,7 @@ let startR, startG, startB, startA;
 let colorArray;
 let checkLeft = false, checkRight = false;
 
-function fillBucket(x, y, startColor, endColor) {
+function fillBucket(x, y, startColor, endColor, isCopy) {
 
     startR = startColor[0];
     startG = startColor[1];
@@ -59,6 +59,7 @@ function fillBucket(x, y, startColor, endColor) {
         }
     }
     context.putImageData(new ImageData(colorArray, width, height), 0, 0);
+    if(isCopy) return;
     socket.emit('fill', { x, y, startColor, endColor, roomId});
 }
 

@@ -1,0 +1,49 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title Scribble
+  link(rel='stylesheet' type='text/css' href='../../css/canvas.css')
+script.
+  window.onload = function () {
+    fillCanvasBackground();
+  }
+header.header
+  #clock
+  #word-to-guess
+    h3 _ _ _ _ _
+  label#room-id 123
+#container
+  .profile-and-palette
+    #profile
+      #profile-pic
+        img(src='https://thumbs.dreamstime.com/b/pink-cosmos-flowe-flowerbackground-112007426.jpg' alt='flower-pic' width='50%' height='70px')
+      #player-name
+        label Sara
+      .ranking
+        .badge
+          label #1
+        #points
+          label#number-of-points 1954
+    .palette
+      label Pick a color:
+      input#color-picker-palette(type='color' oninput='changeBrushColor(this.value)' onchange='changeBrushColor(this.value)')
+      input#brush-range(type='range' min='5' max='30' value='5' oninput='changeBrushSize(this.value)' onchange='changeBrushSize(this.value)')
+      .brush-container(height='60px' width='60px')
+        #brush-size
+      .palette-icons
+        img.pallete-buttons(src='../../imgs/drawing.png' alt='drawing' width='40px' height='40px' onclick='switchToDrawing()')
+        img#broom.pallete-buttons(src='../../imgs/broom-cleaning.png' alt='broom' width='40px' height='40px' onclick='clearCanvas()')
+        img#bucket.pallete-buttons(src='../../imgs/paint-roller-bucket.png' alt='broom' width='40px' height='40px' onclick='switchToFill()')
+  .canvas
+    canvas(width='750px' height='550px')
+    button#start-button(onclick='start-game') start
+  #players-list
+    label#players-list-title List of players
+    .list-of-players
+  #chat
+    .message-box
+    input#message-input(type='text' name='message' style='font-size: 15px;' placeholder='write a message here' autofocus='')
+script(src='/socket.io/socket.io.js')
+script(src='../../scripts/canvas.js')
+script(src='../../scripts/socket.js')
+script(src='../../scripts/canvasFill.js')
