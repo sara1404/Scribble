@@ -4,8 +4,6 @@ let pressed = false;
 let currX = null, currY = null, lastX = null, lastY = null;
 let notMyTurn = false;
 let drawing = true;
-
-let drawing = true;
 let fill = false;
 
 function getColor() {
@@ -33,7 +31,7 @@ let brushSize = document.getElementById('brush-size');
 let pickedBrushSize = document.getElementById('brush-range');
 
 
-function changeBrushSize(size){
+function changeBrushSize(size) {
     brushSize.style.width = (size*2) + 'px';
     brushSize.style.height = (size*2) + 'px';
 }
@@ -58,8 +56,6 @@ function startClock(intervalSize){
         count.innerHTML = intervalSize;
     }, 1000);
 }
-
-
 
 function calculateDistance() {
     if(currX == null || currY == null || lastX == null || lastY == null) return;
@@ -115,7 +111,7 @@ canvas.addEventListener('click', (e) => {
     let g = context.getImageData(0, 0, width, height).data[4 * (y * width + x) + 1];
     let b = context.getImageData(0, 0, width, height).data[4 * (y * width + x) + 2];
 
-    fillBucket(x, y, [r, g, b, 255], convertHexToRGBA(color.substring(1)));
+    fillBucket(x, y, [r, g, b, 255], convertHexToRGBA(color.substring(1)), false);
 });
 
 canvas.addEventListener('mousedown', (e) => {

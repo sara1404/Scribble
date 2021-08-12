@@ -16,8 +16,10 @@ require('./controllers/socketController')(io);
 app.set('view engine', 'pug');
 app.set('views', './public/views');
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.urlencoded({ extended: false}));
+app.use(express.json());
 //Routes in use
+
 app.use('/', indexRouter);
 app.use('/privroom', privateRoomRouter);
 app.use('/api/words', wordsRouter);
