@@ -57,6 +57,45 @@ function startClock(intervalSize){
     }, 1000);
 }
 
+function setLink(link){
+    let element = document.querySelector('.room-id');
+    element.innerHTML = link;
+}
+
+let pickedWord = 'jebem ti suncic';
+(function showHiddenWord(pickedWord){
+    let element = document.querySelector('#word-to-guess h3');
+    for(let i = 0; i < pickedWord.length; i++){
+        if(pickedWord[i] === ' ')
+            element.innerHTML += '\xa0\xa0';
+        else
+            element.innerHTML += '_ ';
+    }
+    revealRandomLetter();
+
+})(pickedWord);
+
+function revealRandomLetter() {
+    let element = document.querySelector('#word-to-guess h3');
+    let randomNum = Math.floor(Math.random() * (pickedWord.length-1));
+
+    let hiddenWord = element.innerHTML;
+
+    hiddenWord = hiddenWord.replaceAll('&nbsp;', ' ');
+    console.log(hiddenWord);
+    hiddenWord = hiddenWord.toString();
+
+    let replacer = pickedWord.charAt(randomNum);
+
+    hiddenWord = hiddenWord.substr(0, 2* randomNum) + replacer + ' ' + hiddenWord.substr(2 * randomNum, hiddenWord.length - 1);
+    hiddenWord = hiddenWord.replaceAll('  ', '&nbsp;&nbsp;');
+    console.log('')
+    element.innerHTML = hiddenWord;
+ 
+}
+
+
+
 function calculateDistance() {
     if(currX == null || currY == null || lastX == null || lastY == null) return;
 
