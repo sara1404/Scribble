@@ -85,6 +85,6 @@ socket.on('new player', (data) => {
    addNewPlayer(profilePic.currentSrc, playerUsername.innerHTML);
 });
 
-socket.on('fill', ({ imageData }) => {
-    switchImageData(imageData);
+socket.on('fill', ({ x, y, startColor, endColor }) => {
+    fillBucket(x, y, startColor, endColor, true);
 })

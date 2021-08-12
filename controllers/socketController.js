@@ -16,7 +16,7 @@ module.exports = (io) => {
         });
 
         socket.on('fill', (data) => {
-            io.in(data.roomId).emit('fill', data);
+            socket.to(data.roomId).emit('fill', data);
         });
 
     });

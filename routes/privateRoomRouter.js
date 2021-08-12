@@ -7,19 +7,13 @@ router.get('/', (req, res) => {
     let username = req.query.username;
     if(username == undefined || username == null) 
         username = 'Generic';
-    console.log(shortId.generate());
-    //res.render('privateRoom.pug', { username })
-    res.sendFile('privateRoom.html', {root: path.join(__dirname, '../public/html')});
+    let roomLink = shortId.generate();
+    res.render('privateRoom.pug', { roomLink })
 });
 
-
-router.get('/:roomId', (req, res) => {
-
-    //let base = 'http://localhost:3000/privroom/' + req.params.roomId;
-    //res.render('linkRoom.pug', { roomId: base});
-    res.sendFile('canvas.html', { root: path.join(__dirname, '../public/html')});
-});
-
+router.get('/:roomId', (req, res) => { res.render('enterName.pug'); });
+router.get('/:roomId/canvas', (req, res) => { res.render('canvas.pug'); });
+router.get('/admin/:roomId', (req, res) => {console.log('hit'); res.render('canvas.pug'); });
 
 
 module.exports = router;
