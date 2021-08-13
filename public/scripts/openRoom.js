@@ -19,7 +19,7 @@ function openRoom() {
       .then((data) => {
         window.location.href = 'http://localhost:3000/privroom/' + link;
       });
-    setLink(link);
+   
 }
 
     
