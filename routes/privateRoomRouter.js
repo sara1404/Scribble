@@ -12,8 +12,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:roomId', (req, res) => { res.render('enterName.pug'); });
-router.get('/:roomId/canvas', (req, res) => { res.render('canvas.pug'); });
-router.get('/admin/:roomId', (req, res) => {console.log('hit'); res.render('canvas.pug'); });
+router.get('/:roomId/canvas', (req, res) => { res.render('canvas.pug', { buttonText: 'READY' }); });
+router.get('/admin/:roomId', (req, res) => { res.render('canvas.pug', { buttonText: 'START'}); });
+
 
 
 module.exports = router;
