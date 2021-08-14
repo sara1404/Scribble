@@ -57,10 +57,6 @@ function startClock(intervalSize){
     }, 1000);
 }
 
-function setLink(link){
-    let element = document.querySelector('.room-id');
-    element.innerHTML = link;
-}
 
 let pickedWord = 'jebem ti suncic';
 (function showHiddenWord(pickedWord){
@@ -86,7 +82,6 @@ function revealRandomLetter() {
     hiddenWord = hiddenWord.toString();
 
     let replacer = pickedWord.charAt(randomNum);
-
     hiddenWord = hiddenWord.substr(0, 2* randomNum) + replacer + ' ' + hiddenWord.substr(2 * randomNum, hiddenWord.length - 1);
     hiddenWord = hiddenWord.replaceAll('  ', '&nbsp;&nbsp;');
     console.log('')
