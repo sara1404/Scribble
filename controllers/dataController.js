@@ -1,28 +1,35 @@
-/*
-    Niz koji prima objekat room ovakav { link, time, rounds , players }
-    Funkcija za dodavanje u niz novog rooma function(objekat{link, time, rounds}), treba da pored ovih podataka, dodas i prazan niz igraca(players) i da tek onda pushas u niz podatke
-    Funkcija za vracanje rooma po Idu(Ako ne postoji element, vratiti null)
+let roomArray = [];
 
-    {
-        link:'123',
-        rounds: 123,
-        time: 123
+let addRoomToArray = (room) => {
+    let listOfPlayers = [];
+    let updatedRoom = { ...room, listOfPlayers };
+    roomArray.push(updatedRoom);
+}
+
+let getRoomByLink = (link) => {
+    let array = roomArray.filter(room =>  room.link === link);
+    return array.length > 0 ? array[0] : null;
+}
+
+let checkPlayer = (link, id, room) => {
+    for(let i = 0; i < room.listOfPlayers.length; i++){
+        if(room.listOfPlayers[i] === id) return true;
     }
+    return false;
+}
 
-    ==>
-    {
-        link:'room',
-        rounds:123,
-        time: 123,
-        players: []
-    }
+let addNewPlayer = (link, id) => {
+        let room = getRoomByLink(link);
+        if(room == null) return;
+        if(checkPlayer(link, id, room)) return;
+        room.listOfPlayers.push(id);
+}
 
+let removePlayer = (link, id) => {
+    let room = getRoomByLink(link);
+    if(room == null) return;
+    if(!checkPlayer(link, id, room)) return;
+    room.listOfPlayers.splice(room.listOfPlayers.indexOf(id), 1)
+} 
 
-    Funkcija za dodavanje novog igraca u sobu, funkcija prima id sobe i id igraca
-    Funkcija za uklanjanje igraca iz sobe, funkcija prima id sobe i id igraca.
-    Funkcije za dodavanje i vracanje igraca su boolean tipa, i samim tim vracaju true false u zavisnosti da li igrac postoji ili ne.
-    Npr igrac postoji a hoces da ga dodas => false, igrac ne postoji a hoces da ga izbrises => false
-
-    */
-
-    module.exports = { funkcija }
+module.exports = { addRoomToArray, getRoomByLink, addNewPlayer, removePlayer }
