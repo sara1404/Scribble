@@ -3,27 +3,25 @@ let context = canvas.getContext('2d');
 let pressed = false;
 let currX = null, currY = null, lastX = null, lastY = null;
 let notMyTurn = false;
+let drawing = true;
+let fill = false;
 
 function getColor() {
-    return document.querySelector('input[type=color').value;
+    return document.querySelector('input[type=color]').value;
 }
 
 function getStrokeSize() {
     return document.querySelector('input[type=range').value;
 }
 
-
-function drawStreamedContent(nesto){
-    currX = nesto.currX;
-    currY = nesto.currY;
-    lastX = nesto.lastX;
-    lastY = nesto.lastY;
-    let distance = nesto.distance;
-    let strokeSize = nesto.strokeSize;
-    let color = nesto.color;
-    draw(currX, currY, strokeSize, color);
-    if(distance > strokeSize) {
-        drawSmooth(strokeSize, color);
+function drawStreamedContent(data) {
+    currX = data.currX;
+    currY = data.currY;
+    lastX = data.lastX;
+    lastY = data.lastY;
+    draw(currX, currY, data.strokeSize, data.color);
+    if(data.distance > data.strokeSize) {
+        drawSmooth(data.strokeSize, data.color);
     }
 }
 
@@ -33,14 +31,22 @@ let brushSize = document.getElementById('brush-size');
 let pickedBrushSize = document.getElementById('brush-range');
 
 
-function changeBrushSize(size){
+function changeBrushSize(size) {
     brushSize.style.width = (size*2) + 'px';
     brushSize.style.height = (size*2) + 'px';
 }
 
 function changeBrushColor(color){
-    brushSize.style.borderColor = color;
+    
     brushSize.style.backgroundColor = color;
+}
+
+function clearCanvas(){
+    context.fillStyle = "White";
+    context.beginPath();
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.closePath();
+    context.fill();
 }
 
 function startClock(intervalSize){
@@ -49,6 +55,38 @@ function startClock(intervalSize){
         intervalSize--;
         count.innerHTML = intervalSize;
     }, 1000);
+}
+
+
+let pickedWord = 'jebem ti suncic';
+(function showHiddenWord(pickedWord){
+    let element = document.querySelector('#word-to-guess h3');
+    for(let i = 0; i < pickedWord.length; i++){
+        if(pickedWord[i] === ' ')
+            element.innerHTML += '\xa0\xa0';
+        else
+            element.innerHTML += '_ ';
+    }
+    revealRandomLetter();
+
+})(pickedWord);
+
+function revealRandomLetter() {
+    let element = document.querySelector('#word-to-guess h3');
+    let randomNum = Math.floor(Math.random() * (pickedWord.length-1));
+
+    let hiddenWord = element.innerHTML;
+
+    hiddenWord = hiddenWord.replaceAll('&nbsp;', ' ');
+    console.log(hiddenWord);
+    hiddenWord = hiddenWord.toString();
+
+    let replacer = pickedWord.charAt(randomNum);
+    hiddenWord = hiddenWord.substr(0, 2* randomNum) + replacer + ' ' + hiddenWord.substr(2 * randomNum, hiddenWord.length - 1);
+    hiddenWord = hiddenWord.replaceAll('  ', '&nbsp;&nbsp;');
+    console.log('')
+    element.innerHTML = hiddenWord;
+ 
 }
 
 
@@ -61,6 +99,7 @@ function calculateDistance() {
     let result = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
     return result;
 }
+
 function draw(x, y, strokeSize, color){
     context.fillStyle = color;
     context.beginPath();
@@ -79,18 +118,44 @@ function drawSmooth(strokeSize, color) {
     context.closePath();
 }
 
+function switchToFill() {
+    drawing = false;
+}
+
+function switchToDrawing() {
+    drawing = true;
+}
+
+function convertHexToRGBA(hex) {
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+
+    return [r, g, b, 255];
+
+}
+
+
+canvas.addEventListener('click', (e) => {
+    if(drawing) return;
+    let color = document.querySelector('input[type=color]').value;
+    let x = e.offsetX;
+    let y = e.offsetY;
+    let r = context.getImageData(0, 0, width, height).data[4 * (y * width + x)];
+    let g = context.getImageData(0, 0, width, height).data[4 * (y * width + x) + 1];
+    let b = context.getImageData(0, 0, width, height).data[4 * (y * width + x) + 2];
+
+    fillBucket(x, y, [r, g, b, 255], convertHexToRGBA(color.substring(1)), false);
+});
 
 canvas.addEventListener('mousedown', (e) => {
-    if(notMyTurn) return;
+    if(notMyTurn || !drawing) return;
     pressed = true;
     lastX = currX;
     lastY = currY;
     currX = e.offsetX;
     currY = e.offsetY;
-    console.log('mouse down');
-    // let x = e.offsetX;
-    // let y = e.offsetY;
-    draw(currX, currY);
+    draw(currX, currY, getStrokeSize(), getColor());
 });
 
 canvas.addEventListener('mousemove', (e) => {

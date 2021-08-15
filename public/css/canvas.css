@@ -1,38 +1,44 @@
 body{
     margin: 0;
     padding: 0;
+    background: #19374B;
 }
 #container{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background: #19374B;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /*HEADER*/
 header{
     width: 100%;
     height: 60px;
-    background-color: coral;
-    margin-bottom: 20px;
+    background-color: #ffc13b;
     text-align: center;
-    box-shadow: 2px 2px black;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    color:#19374B;
+    box-shadow: 5px 5px black;
+    column-gap: 180px;
 }
 #clock{
     width: 4%;
     height: 50px;
     border: 2px solid black;
     border-radius: 50%;
-    margin-left: 50px;
-    margin-top: 3px;
-    margin-right: 550px;
     font-size: 45px;
     padding-bottom: 2px;
-    background-color: burlywood;
+    background-color: #f5f0e1;
 }
-#room-id{
+
+.room-id{
     font-size: 30px;
+    align-self: center;
 }
 
 /*CHAT*/
@@ -46,8 +52,8 @@ header{
     border: 2px solid black;
     text-align: left;
     align-items: center;
-    border-radius: 15px;
     margin-right: 10px;
+    background: white;
 }
 
 .message-box{
@@ -59,12 +65,14 @@ header{
     height: 7%;
     width: 90%;
     margin-bottom: 5px;  
-    border-radius: 17px;
+    border: 2px solid black;
     outline: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .message{
-    padding-left: 3px;
+    margin-left: 3px;
+    margin-bottom: 2px;
+    margin-top: 2px;
     border-bottom: 1px solid black;
 }
 
@@ -72,26 +80,27 @@ header{
 .profile-and-palette{
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
 }
 
-#palette{
+.palette{
     display: flex;
     flex-direction: column;
     margin-top: 30px;
     align-self: center;
-    border: 3px solid black;
     width: 200px;
-    height: 200px;
-    background-color: cadetblue;
+    height: 250px;
     text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #ff6e40;
+    box-shadow: 2px 2px black;
 }
 #color-picker-palette{
     align-self: center;
     margin-top: 15px;
-    margin-bottom: 20px;
-    
+    margin-bottom: 20px;  
 }
+
 #brush-size{
     border: 1px solid black;
     border-radius: 50%;
@@ -100,17 +109,45 @@ header{
     align-self: center;
     background-color: black;
 }
+.palette-icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.brush-container {
+    max-width: 60px;
+    max-height: 60px;
+    min-height: 60px;
+    min-width: 60px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    align-self: center;
+}
+#brush-size {
+    margin: auto;
+}
 
 
+.pallete-buttons {
+    border: 2px solid black;
+    padding: 3px;
+    cursor: pointer;
+}
+.palette label{
+    color: whitesmoke;
+    text-shadow: 1px 1px black;
+    font-size: 20px;
+    padding-top: 5px;
+}
 /*PROFIL*/
 #profile{
     width: 200px;
     height: 220px;
     border: 2px solid black;
     border-radius: 10px;
-    background-color: cadetblue;
-    
-    box-shadow: 2px 2px gray;
+    background-color: #ff6e40;
+    box-shadow: 2px 2px black;
 }
 #profile-pic{
     display: flex;
@@ -124,6 +161,8 @@ header{
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     font-size: 30px;
+    color: whitesmoke;
+    text-shadow: 1px 1px black;
 }
 .ranking{
     display: flex;
@@ -132,7 +171,7 @@ header{
 .badge{
     height: 70px;
     width: 40%;
-    border: 3px solid salmon;
+    border: 3px solid whitesmoke;
     border-radius: 50%;
     margin-left: 5px;
     margin-top: 5px;
@@ -142,21 +181,21 @@ header{
 
 #points{
     font-size: 40px;
-    
     height: 70px;
     margin-left: 10px;
     margin-top: 10px;
 }
 #number-of-points{
    text-align: center;
-   color: salmon;
+   color: whitesmoke;
    vertical-align: middle;
-   
+   text-shadow: 1px 1px black;
 }
 
 /*CANVAS*/
 canvas{
     border: 2px solid black;
+    background: white;
 }
 
 .canvas{
@@ -167,19 +206,19 @@ canvas{
 #start-button{
     width: 40%;
     align-self: center;
-    margin-top: 30px;
+    margin-top: 20px;
     height: 50px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 25px;
     border-radius: 15px;
-    background-color: rgb(230, 99, 173);
+    background-color: #f5f0e1;
     box-shadow: 2px rgb(190, 59, 123);
     text-shadow: 1px 1px gray;
     
 }
 #start-button:hover{
     transition: 0.5s ease-in-out;
-    background-color: rgb(210, 79, 153);
+    background-color: lightgrey;
     width: 43%;
     height: 55px;
     font-size: 35px;
@@ -190,30 +229,31 @@ canvas{
     display: flex;
     flex-direction: column;
     height: 500px;
-    width: 150px;
+    width: 200px;
     border: 2px solid black;
-    border-radius: 10px;
+    background: #ff6e40;
+    min-width: 200px;
 }
 #players-list-title-box{
     width: 100%;
-    height: 7%;
+    height: 10%;
     border-bottom: 2px solid black;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    background-color: cadetblue;
+    background-color: #ff6e40;
 }
 #players-list-title{
     text-align: center;
     font-weight: bold;
+    height: 10%;
+    border-bottom: 2px solid black;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-style: italic;
 }
 .list-of-players{
     width: 100%;
-    height: 93%;
+    height: 90%;
     overflow-y: scroll;
     overflow-x: hidden;
-    scrollbar-width: 2%;
+    background-color: white;
 }
 .player{
     margin-left: 5px;
@@ -223,4 +263,8 @@ canvas{
     margin-top: 5px;
     display: flex;
     flex-direction: row;
+}
+.player label{
+    padding-left: 2px;
+    padding-right: 2px;
 }

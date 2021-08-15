@@ -4,19 +4,14 @@ const path = require('path');
 const shortId = require('shortid');
 
 router.get('/', (req, res) => {
-    let username = req.query.username;
-    if(username == undefined || username == null) 
-        username = 'Generic';
-    console.log(shortId.generate());
-    res.render('privateRoom.pug', { username })
+    let roomLink = shortId.generate();
+    res.render('privateRoom.pug', { roomLink })
 });
 
+router.get('/:roomId', (req, res) => { res.render('enterName.pug'); });
+router.get('/:roomId/canvas', (req, res) => { res.render('canvas.pug', { buttonText: 'READY', roomId: req.params.roomId }); });
+router.get('/admin/:roomId', (req, res) => { res.render('canvas.pug', { buttonText: 'START', roomId: req.params.roomId }); });
 
-router.get('/:roomId', (req, res) => {
 
-    //let base = 'http://localhost:3000/privroom/' + req.params.roomId;
-    //res.render('linkRoom.pug', { roomId: base});
-    res.sendFile('canvas.html', { root: path.join(__dirname, '../public/html')});
-});
 
 module.exports = router;

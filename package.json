@@ -19,6 +19,8 @@
   "homepage": "https://github.com/sara1404/Scribble#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.12",
     "pug": "^3.0.2",
     "shortid": "^2.2.16",
     "socket.io": "^4.1.3"

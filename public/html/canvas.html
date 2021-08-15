@@ -6,13 +6,20 @@
         <title>Scribble</title>
         <link rel="stylesheet" type="text/css" href="../css/canvas.css"/>
     </head>
+    <script>
+        window.onload = function () {
+            fillCanvasBackground();
+        }
+    </script>
     <body>
         <header class="header">
             <div id="clock"></div>
             <div id="word-to-guess">
-                <h3>_ _ _ _ _</h3>
+                <h3></h3>
             </div>
-            <label id="room-id">123</label>
+            <div class="room-id">
+                <label id="room-id">123</label>
+            </div>
         </header>
         <div id="container">
             <div class="profile-and-palette">
@@ -34,15 +41,16 @@
                    
                 </div>
     
-                <div id="palette"  style="background-color: white;">
+                <div class="palette">
                     <label>Pick a color:</label>
                     <input type="color" id="color-picker-palette" oninput="changeBrushColor(this.value)" onchange="changeBrushColor(this.value)">
                     
                     <input type="range" min="5" max="30" value="5" id="brush-range" oninput="changeBrushSize(this.value)" onchange="changeBrushSize(this.value)">
-                    <div id="brush-size" ></div>
+                    <div height="60px" width="60px" class="brush-container"><div id="brush-size" ></div></div>
                     <div class="palette-icons">
-                        <img src="../imgs/broom-cleaning.png" alt="broom" width="20px" height="20px" id="broom">
-                        <img src="../imgs/paint-roller-bucket.png" alt="broom" width="20px" height="20px" id="bucket">
+                        <img class="pallete-buttons" src="../imgs/drawing.png" alt="drawing" width="40px" height="40px" onclick="switchToDrawing()">
+                        <img class="pallete-buttons" src="../imgs/broom-cleaning.png" alt="broom" width="40px" height="40px" id="broom" onclick="clearCanvas()">
+                        <img class="pallete-buttons" src="../imgs/paint-roller-bucket.png" alt="broom" width="40px" height="40px" id="bucket" onclick="switchToFill()">
                     </div>
                    
                 </div>
@@ -58,43 +66,42 @@
         
 
             <div id="players-list">
-                <div id="players-list-title-box">
-                    <label id="players-list-title">List of players</label>
-                </div>
+
+                <label id="players-list-title">List of players</label>
                 <div class="list-of-players">
-                    <div class="player">1.Sara</div>
-                    <div class="player">2.Srdjan</div>
-                    <div class="player">3.Dobrica</div>
-                    <div class="player">4.Cola</div>
+                    <div class="player">
+                        <img src="https://m.media-amazon.com/images/I/81kTc0r6StL._SL1500_.jpg" alt="">
+                        <label> Sara</label> 
+                        <label > 2589 </label>
+                    </div>
+                    <div class="player">
+                        <img src="https://m.media-amazon.com/images/I/81kTc0r6StL._SL1500_.jpg" alt=""> 
+                        <label> Srdjan</label> 
+                        <label > 2589 </label>
+                    </div>
+                    <div class="player">
+                        <img src="https://m.media-amazon.com/images/I/81kTc0r6StL._SL1500_.jpg" alt="">
+                        <label> Dobrica</label> 
+                        <label > 2589 </label>
+                    </div>
+                    <div class="player">
+                        <img src="https://m.media-amazon.com/images/I/81kTc0r6StL._SL1500_.jpg" alt="">
+                        <label> Cola</label> 
+                        <label > 2589 </label>
+                    </div>
                 </div>
             </div>
 
             <div id="chat">
-                
-                    <div class="message-box">
-                        <div class="message">
-                            <label id="message-owner">Sara:</label>
-                            <label class="message-text"> Ovo je poruka</label>
-                        </div>
-                        <div class="message">
-                            <label id="message-owner">Sara:</label>
-                            <label class="message-text"> Ovo je poruka</label>
-                        </div>
-                        <div class="message">
-                            <label id="message-owner">Sara:</label>
-                            <label class="message-text"> Ovo je poruka</label>
-                        </div>
-                        <div class="message">
-                            <label id="message-owner">Sara:</label>
-                            <label class="message-text"> Ovo je poruka</label>
-                        </div>
-                    </div>
+                    <div class="message-box"></div>
                     <input id="message-input" type="text" name="message" style="font-size: 15px;" placeholder="write a message here" autofocus/>  
             </div>
         </div>
+ 
         <script src="/socket.io/socket.io.js"></script>
         <script src="../scripts/canvas.js"></script>
         <script src="../scripts/socket.js"></script>
+        <script src="../scripts/canvasFill.js"></script>
 
     </body>
 </html>
