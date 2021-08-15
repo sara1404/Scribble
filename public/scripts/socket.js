@@ -88,3 +88,7 @@ socket.on('new player', (data) => {
 socket.on('fill', ({ x, y, startColor, endColor }) => {
     fillBucket(x, y, startColor, endColor, true);
 })
+
+socket.on('user disconnected', (socketId, roomId) => {
+    console.log(socketId, roomId);
+}); 
