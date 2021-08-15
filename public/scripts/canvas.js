@@ -87,13 +87,10 @@ canvas.addEventListener('mousedown', (e) => {
     lastY = currY;
     currX = e.offsetX;
     currY = e.offsetY;
-<<<<<<< HEAD
     console.log('mouse down');
     // let x = e.offsetX;
     // let y = e.offsetY;
     draw(currX, currY);
-=======
->>>>>>> 08cedc752d5c8d2de50cb746f25ccf44e4ab6299
 });
 
 canvas.addEventListener('mousemove', (e) => {
