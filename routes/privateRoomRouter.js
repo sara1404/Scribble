@@ -3,6 +3,7 @@ const router = express.Router();
 const path = require('path');
 const shortId = require('shortid');
 
+
 router.get('/', (req, res) => {
     let roomLink = shortId.generate();
     res.render('privateRoom.pug', { roomLink })

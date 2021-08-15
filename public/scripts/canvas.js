@@ -41,12 +41,14 @@ function changeBrushColor(color){
     brushSize.style.backgroundColor = color;
 }
 
-function clearCanvas(){
+function clearCanvas(ordered){
     context.fillStyle = "White";
     context.beginPath();
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.closePath();
     context.fill();
+    if(ordered) return;
+    socket.emit('clear canvas', roomId);
 }
 
 function startClock(intervalSize){
@@ -133,6 +135,15 @@ function convertHexToRGBA(hex) {
 
     return [r, g, b, 255];
 
+}
+
+function loadDataFromStorage() {
+    let node = document.querySelector('#player-name label');
+    node.innerHTML = localStorage.getItem('username');
+    let img = document.querySelector('#profile-pic img');
+    console.log(localStorage.getItem('img'));
+    img.src = localStorage.getItem('img');
+    console.log(label.innerHTML);
 }
 
 

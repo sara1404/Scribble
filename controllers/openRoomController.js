@@ -1,18 +1,15 @@
-let rooms = [];
+let { addRoomToArray, getRoomByLink } = require('./dataController');
 
-const findIfExists = (link) => {
-    let roomsWithLink = rooms.filter(room => room.link == link);
-    console.log(roomsWithLink.length);
-    return roomsWithLink.length > 0;
-}
+
+
 
 const postOpenRoom = (req, res) => {
     let { link } = req.body;
-    if(findIfExists(link)) {
+    if(getRoomByLink(link) !== null) {
         return res.status(401).send({ex: 'Generated link alredy exists'});
     }
 
-    rooms.push(req.body);
+    addRoomToArray(req.body);
     res.status(200).send({});
 }
 

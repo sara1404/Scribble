@@ -20,7 +20,8 @@ let joinRoom = (channel) => {
 }
 
 let emitNewPlayer = () => {
-    socket.emit('new player', { roomId, username: playerUsername.innerHTML, img: profilePic.currentSrc});
+    console.log('this is source', profilePic.currentSrc);
+    socket.emit('new player', { roomId, username: localStorage.getItem('username'), img: localStorage.getItem('img')});
 }
 
 let appendMessage = (message) => {
@@ -41,8 +42,9 @@ let appendMessage = (message) => {
 }
 
 
-function addNewPlayer(img, name){
+function addNewPlayer(img, name, id){
     let element = document.createElement('div');
+    element.id = id;
     let playerPic = document.createElement('img');
     let playerName = document.createElement('label');
     let points = document.createElement('label');
@@ -56,8 +58,11 @@ function addNewPlayer(img, name){
     listOfPlayers.appendChild(element);
 }
 
-function removePlayer(){
-    
+function removePlayer(id){
+    console.log('id is', id);
+    let node = document.getElementById(id);
+    let listOfPlayers = document.querySelector('.list-of-players')
+    listOfPlayers.removeChild(node);
 }
 
 messageContext.addEventListener('keypress', (e) => {
@@ -82,13 +87,23 @@ socket.on('message', (data) => {
 socket.on('new drawing', (info) => { drawStreamedContent(info) });
 
 socket.on('new player', (data) => {
-   addNewPlayer(profilePic.currentSrc, playerUsername.innerHTML);
+   addNewPlayer(data.img, data.username, data.id);
 });
+
+socket.on('clear canvas', () => {
+    clearCanvas(true);
+})
 
 socket.on('fill', ({ x, y, startColor, endColor }) => {
     fillBucket(x, y, startColor, endColor, true);
 })
 
 socket.on('user disconnected', (socketId, roomId) => {
-    console.log(socketId, roomId);
+    console.log('user disconnected', socket.id);
+    removePlayer(socket.id);
 }); 
+
+socket.on('all players', (players) => {
+    console.log(players);
+    players.forEach(player => addNewPlayer(player.img, player.username, player.id));
+});

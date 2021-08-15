@@ -6,9 +6,15 @@ function saveUsernameToStorage() {
     }
     localStorage.setItem('username', input.value);
     localStorage.setItem('admin', true);
+    saveImageSrcToStorage();
     window.location.href = 'http://localhost:3000/privroom';
 }
 
+function saveImageSrcToStorage() {
+    let img = document.getElementById('lik');
+    localStorage.setItem('img', img.currentSrc);
+
+}
 
 function saveUsernameAndRedirectToMainPage() {
     let input = document.getElementById('inp');
@@ -18,5 +24,6 @@ function saveUsernameAndRedirectToMainPage() {
     }
     localStorage.setItem('username', input.value);
     localStorage.setItem('admin', false);
+    saveImageSrcToStorage();
     window.location.href += '/canvas';
 }
