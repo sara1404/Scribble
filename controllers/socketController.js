@@ -14,6 +14,7 @@ module.exports = (io) => {
         });
 
         socket.on('new player', (data) => {
+            console.log(data.username, socket.id);
             addNewPlayer(data.roomId, socket.id, data.username, data.img);
             socket.in(data.roomId).emit('new player', { id: socket.id, img: data.img, username: data.username });
             io.to(socket.id).emit('all players', getAllPlayers(data.roomId));
@@ -35,6 +36,7 @@ module.exports = (io) => {
             const room = iterator.next().value;
             socket.leave(room);
             removePlayer(room, socket.id);
+            console.log(socket.id);
             socket.to(room).emit('user disconnected', socket.id, room);
 
         });

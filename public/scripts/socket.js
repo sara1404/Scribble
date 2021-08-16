@@ -62,6 +62,7 @@ function removePlayer(id){
     console.log('id is', id);
     let node = document.getElementById(id);
     let listOfPlayers = document.querySelector('.list-of-players')
+    console.log(node);
     listOfPlayers.removeChild(node);
 }
 
@@ -99,8 +100,8 @@ socket.on('fill', ({ x, y, startColor, endColor }) => {
 })
 
 socket.on('user disconnected', (socketId, roomId) => {
-    console.log('user disconnected', socket.id);
-    removePlayer(socket.id);
+    console.log('user disconnected', socketId);
+    removePlayer(socketId);
 }); 
 
 socket.on('all players', (players) => {
